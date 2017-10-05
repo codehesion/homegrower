@@ -5,8 +5,10 @@
         <div class="row">
             <div class="col-12 col-md-6 ml-md-auto mr-md-auto text-center">
                 <div class="card mt-3">
+                    <div class="card-header text-light bg-success">
+                        <h3 class="mb-0"><%= grow.name %></h3>
+                    </div>                    
                     <div class="card-body">
-                        <h3 class="card-title"><%= grow.name %></h3>
                         <h6 class="card-subtitle mb-2 text-muted">created <%= grow.createdFromNow() %></h6>
                         
                         <p class="card-text">
@@ -24,7 +26,8 @@
                     </div><!-- .card-body -->
                     <ul class="list-group list-group-flush">
                         <% grow.plants.forEach((plant) => { %>
-                            <a href="/plants/<%= plant._id %>" class="list-group-item list-group-item-action">
+                            <a href="/plants/<%= plant._id %>" class="list-group-item list-group-item-action bg-light">
+                                <i class="fa fa-lg fa-leaf text-success"></i>&nbsp;&nbsp; 
                                 <%= plant.name %>
                             </a>
                         <% }); %>

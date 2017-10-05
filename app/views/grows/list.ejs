@@ -5,8 +5,10 @@
         <div class="row">
             <div class="col-12 col-md-6 ml-md-auto mr-md-auto text-center">
                 <div class="card mt-3">
+                    <div class="card-header text-light bg-success">
+                        <h3 class="mb-0">List All Grows</h3>
+                    </div>                       
                     <div class="card-body">
-                        <h1 class="card-title">List All Grows</h1>
 
                         <p class="card-text">
                             There are currently <%= grows.length %> Grows.
@@ -16,7 +18,8 @@
                     <% if(grows.length > 0){ %>
                         <ul class="list-group list-group-flush">
                             <% grows.forEach((grow) => { %>
-                                <a href="/grows/<%= grow._id %>" class="list-group-item list-group-item-action">
+                                <a href="/grows/<%= grow._id %>" class="list-group-item list-group-item-action text-light bg-success">
+                                    <i class="fa fa-lg fa-leaf"></i>&nbsp;&nbsp;
                                     <%= grow.name %> - <%= grow.user.local.username %> - <%= grow.plants.length %> Plants
                                 </a>
                             <% }); %>

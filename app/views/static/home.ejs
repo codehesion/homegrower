@@ -5,9 +5,11 @@
         <div class="row">
             <div class="col-12 col-md-6 ml-md-auto mr-md-auto text-center">
                 <div class="card mt-3">
+                    <div class="card-header text-light bg-success">
+                        <h1 class="mb-0">HomeGrower</h1>
+                    </div>                    
                     <div class="card-body">
-                        <h1 class="card-title">HomeGrower</h1>
-                        <h4 class="card-subtitle mb-2 text-muted">A Home Growing Cannabis Management Solution</h4>
+                        <h5 class="card-subtitle mb-2 text-muted">A Home Growing Cannabis Management Solution</h5>
                         <% if(isLoggedIn){ %>
                             <p class="card-text text-success">Welcome <%= user.local.username %>, you are logged in.</p>
                         <% } else { %>
