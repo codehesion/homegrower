@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const moment   = require('moment');
 
 const growSchema = mongoose.Schema({
+    createdAt: { type: String, default: String(new Date()) },
     user: { type: String, ref: "User" },
     name: String,
     description: String,

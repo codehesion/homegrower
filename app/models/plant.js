@@ -4,6 +4,7 @@ const moment   = require('moment');
 const plantSchema = mongoose.Schema({
     user: { type: String, ref: "User" },
     grow: { type: String, ref: "Grow" },
+    strain: { type: String, ref: "Strain" },
     name: String,
     health: { type: Number, default: 100 },
     stage: { type: String, default: "seeding" },
@@ -12,7 +13,7 @@ const plantSchema = mongoose.Schema({
 });
 
 plantSchema.methods.createdFromNow = function() {
-    return moment(this.local.createdAt).fromNow();
+    return moment(this.createdAt).fromNow();
 };
 
 module.exports = mongoose.model('Plant', plantSchema);

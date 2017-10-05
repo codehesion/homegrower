@@ -47,6 +47,8 @@ module.exports = function(app) {
 function getAllGrows(req,res,next){
     Grow
     .find({},{},{sort: {createdAt: -1}})
+    .populate('user')
+    .populate('plants')
     .exec((error, grows) => {
         if(error){ console.log(error); }
         res.locals.grows = grows;
@@ -57,6 +59,8 @@ function getAllGrows(req,res,next){
 function getGrowById(req,res,next){
     Grow
     .findOne({_id: req.params.growId})
+    .populate('user')
+    .populate('plants')    
     .exec((error, grow) => {
         if(error){ console.log(error); }
         res.locals.grow = grow;
@@ -67,6 +71,8 @@ function getGrowById(req,res,next){
 function getCurrentUserGrows(req,res,next){
     Grow
     .find({user: req.user._id})
+    .populate('user')
+    .populate('plants')    
     .exec((error, grows) => {
         if(error){ console.log(error); }
         res.locals.grows = grows;

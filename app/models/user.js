@@ -4,6 +4,7 @@ const moment   = require('moment');
 
 const userSchema = mongoose.Schema({
     isAdmin          : { type: Boolean, default: false },
+    totalYield       : { type: Number, default: 0 },
     local            : {
         createdAt       : String,
         profileImageUrl : String,

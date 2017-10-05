@@ -35,6 +35,8 @@ module.exports = function(app) {
 function getCurrentUserGrows(req,res,next){
     Grow
     .find({user: req.user._id})
+    .populate('user')
+    .populate('plants')    
     .exec((error, grows) => {
         if(error){ console.log(error); }
         res.locals.grows = grows;
