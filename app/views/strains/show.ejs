@@ -22,6 +22,33 @@
                             </div><!--.col -->
                         </div><!-- .row -->
 
+                        <div class="row">
+                            <div class="col text-right">
+                                Average Height:
+                            </div><!--.col -->
+                            <div class="col text-left">
+                                <%= strain.averageGrowHeight %> 
+                            </div><!--.col -->
+                        </div><!-- .row -->
+
+                        <div class="row">
+                            <div class="col text-right">
+                                Average Yield:
+                            </div><!--.col -->
+                            <div class="col text-left">
+                                <%= strain.averageYield %> g/m<sup>2</sup> 
+                            </div><!--.col -->
+                        </div><!-- .row -->
+
+                        <div class="row">
+                            <div class="col text-right">
+                                Average Flowering Time:
+                            </div><!--.col -->
+                            <div class="col text-left">
+                                <%= strain.averageFloweringTime %> weeks 
+                            </div><!--.col -->
+                        </div><!-- .row -->
+
                     </div><!-- .card-body -->
                     <% if(user.isAdmin){ %>
                         <ul class="list-group list-group-flush">
