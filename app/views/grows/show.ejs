@@ -16,6 +16,10 @@
                             This Grow currently has <%= grow.plants.length %> Plants.
                         </p>
 
+                        <a href="/grows/<%= grow._id %>/edit" class="btn btn-primary">
+                            Edit Grow
+                        </a>
+
                     </div><!-- .card-body -->
                     <ul class="list-group list-group-flush">
                         <% grow.plants.forEach((plant) => { %>

@@ -29,6 +29,29 @@ module.exports = function(app) {
         });
     });
 
+    // Edit Grow Page
+    app.get('/grows/:growId/edit', loginRequired, getGrowById, function(req, res) {
+        res.render('grows/edit.ejs', {
+            title : "Edit Grow"
+        });
+    });
+
+    app.post('/grows/:growId/edit', loginRequired, getGrowById, function(req, res) {
+        Grow
+        .findOne({_id: req.params.growId})
+        .populate('user')
+        .populate('plants')    
+        .exec((error, grow) => {
+            if(error){ console.log(error); }
+            grow.name = req.body.name;
+            grow.description = req.body.description;
+            grow.save((err) => {
+                if(err){ console.log(err); }
+                res.redirect(`/grows/${grow._id}`);
+            });
+        });        
+    });
+
     // Grow Profile Page
     app.get('/grows/:growId', loginRequired, getGrowById, function(req, res) {
         res.render('grows/show.ejs', {
