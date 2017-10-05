@@ -15,14 +15,42 @@
                                 <label for="description">Description</label>
                                 <textarea name="description" class="form-control"><%= grow.description %></textarea>
                             </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-success mt-3">
+                            <div class="form-group btn-group">
+                                <button type="submit" class="btn btn-success">
                                     <i class="fa fa-lg fa-save"></i>&nbsp;&nbsp;Update
+                                </button>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-modal">
+                                    Delete
                                 </button>
                             </div>
                         </form>
                     </div><!-- .card-body -->                    
                 </div><!-- .card -->
+
+                <!-- Modal -->
+                <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="delete-modal-label" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="delete-modal-label">Delete Grow ?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <p>
+                            Warning! This action cannot be reversed!<br>
+                            Warning! This will also delete all Plants associated with this grow!<br>
+                            Do you wish to continue?
+                        </p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <a type="button" href="/grows/<%= grow._id %>/delete" class="btn btn-danger">Continue &amp; Delete </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
             </div><!-- .col -->
         </div><!-- .row -->    
     </div><!-- .container-fluid -->            

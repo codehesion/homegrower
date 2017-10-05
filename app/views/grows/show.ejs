@@ -16,9 +16,9 @@
                             This Grow currently has <%= grow.plants.length %> Plants.
                         </p>
 
-                        <a href="/grows/<%= grow._id %>/edit" class="btn btn-primary">
+<!--                         <a href="/grows/<%= grow._id %>/edit" class="btn btn-primary">
                             Edit Grow
-                        </a>
+                        </a> -->
 
                     </div><!-- .card-body -->
                     <ul class="list-group list-group-flush">
@@ -27,8 +27,11 @@
                                 <%= plant.name %>
                             </a>
                         <% }); %>
-                        <a href="/grows/<%= grow._id %>/new-plant" class="list-group-item list-group-item-action">
+                        <a href="/grows/<%= grow._id %>/new-plant" class="list-group-item list-group-item-action text-light bg-success">
                             New Plant
+                        </a>
+                        <a href="/grows/<%= grow._id %>/edit" class="list-group-item list-group-item-action text-light bg-primary">
+                            Edit Grow
                         </a>
                     </ul>                    
                 </div><!-- .card -->

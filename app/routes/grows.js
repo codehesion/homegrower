@@ -25,7 +25,7 @@ module.exports = function(app) {
         });
         newGrow.save((error) => {
             if(error){ console.log(error); }
-            res.redirect('/grows');
+            res.redirect('/profile');
         });
     });
 
@@ -50,6 +50,20 @@ module.exports = function(app) {
                 res.redirect(`/grows/${grow._id}`);
             });
         });        
+    });
+
+    // Delete Grow
+    app.get('/grows/:growId/delete', loginRequired, getGrowById, function(req, res) {
+        console.log(`User ID: ${req.user._id}`);
+        console.log(`Grow User ID: ${res.locals.grow.user._id}`);
+        if(String(req.user._id) === String(res.locals.grow.user._id)){
+            Grow.findOneAndRemove({'_id': req.params.growId}, function (error) {
+                if(error){ console.log(error); }
+                res.redirect('/profile'); 
+            });
+        } else {
+            res.redirect(`/grows/${req.params.growId}/edit`);
+        }    
     });
 
     // Grow Profile Page
