@@ -111,6 +111,8 @@ require('./app/routes/static.js')(app);
 require('./app/routes/passport.js')(app, passport);
 require('./app/routes/users.js')(app);
 require('./app/routes/grows.js')(app);
+require('./app/routes/plants.js')(app);
+require('./app/routes/strains.js')(app);
 
 /*****************/
 /* Launch Server */

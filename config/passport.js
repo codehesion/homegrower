@@ -71,7 +71,6 @@ module.exports = function(passport) {
 
                     // Set User Credentials
                     newUser.isAdmin = isAdmin;
-                    newUser.local.createdAt = String(new Date());
                     newUser.local.username = username;
                     newUser.local.password = newUser.generateHash(password);
                     newUser.local.email = "";

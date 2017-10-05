@@ -11,7 +11,7 @@ const adminRequired = require('../middleware/adminRequired');
 module.exports = function(app) {
 
     // New Grow Page
-    app.get('/grows/new', loginRequired, getAllGrows, function(req, res) {
+    app.get('/grows/new', loginRequired, function(req, res) {
         res.render('grows/new.ejs', {
             title : "New Grow"
         });
@@ -26,6 +26,26 @@ module.exports = function(app) {
         newGrow.save((error) => {
             if(error){ console.log(error); }
             res.redirect('/profile');
+        });
+    });
+
+    // New Plant Page
+    app.get('/grows/:growId/new-plant', loginRequired, function(req, res) {
+        res.render('plants/new.ejs', {
+            title : "New Plant"
+        });
+    });
+
+    app.post('/grows/:growId/new-plant', loginRequired, function(req, res) {
+        let newPlant = new Plant({
+            user: req.user._id,
+            grow: req.params.growId,
+            name: req.body.name,
+            description: req.body.description
+        });
+        newPlant.save((error) => {
+            if(error){ console.log(error); }
+            res.redirect(`/grows/${req.params.growId}`);
         });
     });
 

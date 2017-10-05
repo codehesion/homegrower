@@ -2,10 +2,12 @@ const mongoose = require('mongoose');
 const moment   = require('moment');
 
 const plantSchema = mongoose.Schema({
+    createdAt: { type: String, default: String(new Date()) },
     user: { type: String, ref: "User" },
     grow: { type: String, ref: "Grow" },
     strain: { type: String, ref: "Strain" },
     name: String,
+    description: String,
     health: { type: Number, default: 100 },
     stage: { type: String, default: "seeding" },
     yield: { type: Number, default: 0 },

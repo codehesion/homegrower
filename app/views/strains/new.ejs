@@ -5,8 +5,18 @@
             <div class="col-12 col-md-6 ml-md-auto mr-md-auto text-center">
                 <div class="card mt-3">
                     <div class="card-body">
-                        <h1 class="card-title">New Strain</h1>
+                        <h3 class="card-title">New Strain</h3>
                         <form method="post">
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <select name="category" class="form-control">
+                                    <option value="indica">Indica</option>
+                                    <option value="indica leaning hybrid">Indica Leaning Hybrid</option>
+                                    <option value="hybrid">Indica/Sativa Hybrid</option>
+                                    <option value="sativa leaning hybrid">Sativa Leaning Hybrid</option>
+                                    <option value="sativa">Sativa</option>
+                                </select>
+                            </div>
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" name="name" class="form-control">
@@ -14,6 +24,38 @@
                             <div class="form-group">
                                 <label for="description">Description</label>
                                 <textarea name="description" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="growDifficulty">Grow Difficulty</label>
+                                <select name="growDifficulty" class="form-control">
+                                    <option value="easy">Easy</option>
+                                    <option value="moderate">Moderate</option>
+                                    <option value="difficult">Difficult</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="averageGrowHeight">Average Grow Height</label>
+                                <select name="averageGrowHeight" class="form-control">
+                                    <option value="< .75m">&lt; .75m</option>
+                                    <option value=".76 - 2m">.76 - 2m</option>
+                                    <option value="> 2m">&gt; 2m</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="averageYield">Average Yield</label>
+                                <select name="averageYield" class="form-control">
+                                    <option value="40 - 99">40 - 99 g/m2</option>
+                                    <option value="100 - 250">100 - 250 g/m2</option>
+                                    <option value="251 - 500">251 - 500 g/m2</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="averageFloweringTime">Average Flowering Time</label>
+                                <select name="averageFloweringTime" class="form-control">
+                                    <option value="7 - 9">7 - 9 wks</option>
+                                    <option value="10 - 12">10 - 12 wks</option>
+                                    <option value="> 12">&gt;12 wks</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-success mt-3">

@@ -6,7 +6,7 @@ const userSchema = mongoose.Schema({
     isAdmin          : { type: Boolean, default: false },
     totalYield       : { type: Number, default: 0 },
     local            : {
-        createdAt       : String,
+        createdAt       : { type: String, default: String(new Date()) },
         profileImageUrl : String,
         username        : String,
         email           : String,

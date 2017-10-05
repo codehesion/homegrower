@@ -1,0 +1,151 @@
+<% include ../partials/header.ejs %>
+
+<div class="viewport-container pb-5">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-6 ml-md-auto mr-md-auto text-center">
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h3 class="card-title">Edit Strain</h3>
+                        <form method="post">
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <select name="category" class="form-control">
+                                    <option 
+                                        value="indica" 
+                                        <% if(strain.category === "indica"){ %>selected<% } %>
+                                    >Indica</option>
+                                    <option 
+                                        value="indica leaning hybrid" 
+                                        <% if(strain.category === "indica leaning hybrid"){ %>selected<% } %>
+                                    >Indica Leaning Hybrid</option>
+                                    <option 
+                                        value="hybrid" 
+                                        <% if(strain.category === "hybrid"){ %>selected<% } %>
+                                    >Indica/Sativa Hybrid</option>
+                                    <option 
+                                        value="sativa leaning hybrid" 
+                                        <% if(strain.category === "sativa leaning hybrid"){ %>selected<% } %>
+                                    >Sativa Leaning Hybrid</option>
+                                    <option 
+                                        value="sativa" 
+                                        <% if(strain.category === "sativa"){ %>selected<% } %>
+                                    >Sativa</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" name="name" class="form-control" value="<%= strain.name %>">
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea name="description" class="form-control"><%= strain.description %></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="growDifficulty">Grow Difficulty</label>
+                                <select name="growDifficulty" class="form-control">
+                                    <option 
+                                        value="easy" 
+                                        <% if(strain.growDifficulty === "easy"){ %>selected<% } %>
+                                    >Easy</option>
+                                    <option 
+                                        value="moderate" 
+                                        <% if(strain.growDifficulty === "moderate"){ %>selected<% } %>
+                                    >Moderate</option>
+                                    <option 
+                                        value="difficult" 
+                                        <% if(strain.growDifficulty === "difficult"){ %>selected<% } %>
+                                    >Difficult</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="averageGrowHeight">Average Grow Height</label>
+                                <select name="averageGrowHeight" class="form-control">
+                                    <option 
+                                        value="< .75m" 
+                                        <% if(strain.averageGrowHeight === "< .75m"){ %>selected<% } %>
+                                    >&lt; .75m</option>
+                                    <option 
+                                        value=".76 - 2m" 
+                                        <% if(strain.averageGrowHeight === ".76 - 2m"){ %>selected<% } %>
+                                    >.76 - 2m</option>
+                                    <option 
+                                        value="> 2m" 
+                                        <% if(strain.averageGrowHeight === "> 2m"){ %>selected<% } %>
+                                    >&gt; 2m</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="averageYield">Average Yield</label>
+                                <select name="averageYield" class="form-control">
+                                    <option 
+                                        value="40 - 99" 
+                                        <% if(strain.averageYield === "40 - 99"){ %>selected<% } %>
+                                    >40 - 99 g/m2</option>
+                                    <option 
+                                        value="100 - 250" 
+                                        <% if(strain.averageYield === "100 - 250"){ %>selected<% } %>
+                                    >100 - 250 g/m2</option>
+                                    <option 
+                                        value="251 - 500" 
+                                        <% if(strain.averageYield === "251 - 500"){ %>selected<% } %>
+                                    >251 - 500 g/m2</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="averageFloweringTime">Average Flowering Time</label>
+                                <select name="averageFloweringTime" class="form-control">
+                                    <option 
+                                        value="7 - 9" 
+                                        <% if(strain.averageFloweringTime === "7 - 9"){ %>selected<% } %>
+                                    >7 - 9 wks</option>
+                                    <option 
+                                        value="10 - 12" 
+                                        <% if(strain.averageFloweringTime === "10 - 12"){ %>selected<% } %>
+                                    >10 - 12 wks</option>
+                                    <option 
+                                        value="> 12" 
+                                        <% if(strain.averageFloweringTime === "> 12"){ %>selected<% } %>
+                                    >&gt;12 wks</option>
+                                </select>
+                            </div>
+                            <div class="form-group btn-group">
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fa fa-lg fa-save"></i>&nbsp;&nbsp;Update
+                                </button>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-modal">
+                                    Delete
+                                </button>
+                            </div>
+                        </form>
+                    </div><!-- .card-body -->                    
+                </div><!-- .card -->
+                <!-- Modal -->
+                <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="delete-modal-label" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="delete-modal-label">Delete Grow ?</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>
+                                    Warning! This action cannot be reversed!<br>
+                                    Do you wish to continue?
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <a type="button" href="/strains/<%= strain._id %>/delete" class="btn btn-danger">Continue &amp; Delete </a>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- .modal -->                 
+            </div><!-- .col -->
+        </div><!-- .row -->    
+    </div><!-- .container-fluid -->            
+</div><!-- .viewport-container -->
+
+<% include ../partials/footer.ejs %>

@@ -2,15 +2,18 @@ const mongoose = require('mongoose');
 const moment   = require('moment');
 
 const strainSchema = mongoose.Schema({ 
-    createdAt: String,
+    createdAt: { type: String, default: String(new Date()) },
     category: String,
     name: String,
     description: String,
-    averageFloweringTime: String
+    growDifficulty: String,
+    averageGrowHeight: String,
+    averageFloweringTime: String,
+    averageYield: String
 });
 
 strainSchema.methods.createdFromNow = function() {
-    return moment(this.local.createdAt).fromNow();
+    return moment(this.createdAt).fromNow();
 };
 
 module.exports = mongoose.model('Strain', strainSchema);

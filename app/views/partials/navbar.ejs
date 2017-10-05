@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/">HomeGrower</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#primary-navbar" aria-controls="primary-navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="primary-navbar">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link" href="/">
@@ -12,10 +12,10 @@
                 </a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-2x fa-user-circle-o"></i>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <div class="dropdown-menu" aria-labelledby="userDropdownMenuLink">
                     <a class="dropdown-item" href="/profile">Profile</a>
                 </div>
             </li>
@@ -24,6 +24,16 @@
                     <a class="nav-link" href="/sign-in"><i class="fa fa-2x fa-sign-in"></i></a>
                 </li>                
             <% } else { %>
+                <% if(user.isAdmin){ %>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="adminDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-2x fa-key"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="adminDropdownMenuLink">
+                            <a class="dropdown-item" href="/strains">Strains</a>
+                        </div>
+                    </li>
+                <% } %>
                 <li class="nav-item">
                     <a class="nav-link" href="/sign-out"><i class="fa fa-2x fa-sign-out"></i></a>
                 </li>
