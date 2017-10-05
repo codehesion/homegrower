@@ -14,7 +14,35 @@ module.exports = function(app) {
    // List Indica Strains Page
     app.get('/strains/indica', loginRequired, adminRequired, getAllIndicaStrains, function(req, res) {
         res.render('strains/list.ejs', {
-            title : "List Indica Strains"
+            title : "Indica Strains"
+        });
+    });
+
+   // List Indica Hybrid Strains Page
+    app.get('/strains/indica-hybrid', loginRequired, adminRequired, getAllIndicaHybridStrains, function(req, res) {
+        res.render('strains/list.ejs', {
+            title : "Indica Hybrid Strains"
+        });
+    });
+
+   // List Hybrid Strains Page
+    app.get('/strains/hybrid', loginRequired, adminRequired, getAllHybridStrains, function(req, res) {
+        res.render('strains/list.ejs', {
+            title : "Hybrid Strains"
+        });
+    });
+
+   // List Sativa Hybrid Strains Page
+    app.get('/strains/sativa-hybrid', loginRequired, adminRequired, getAllSativaHybridStrains, function(req, res) {
+        res.render('strains/list.ejs', {
+            title : "Sativa Hybrid Strains"
+        });
+    });
+
+   // List Sativa Strains Page
+    app.get('/strains/sativa', loginRequired, adminRequired, getAllSativaStrains, function(req, res) {
+        res.render('strains/list.ejs', {
+            title : "Sativa Strains"
         });
     });
 
@@ -102,7 +130,7 @@ module.exports = function(app) {
     // List Strains Page
     app.get('/strains', loginRequired, getAllStrains, function(req, res) {
         res.render('strains/list.ejs', {
-            title : "All Strains"
+            title : "Strains"
         });
     });
 
