@@ -7,11 +7,52 @@ body {
 	display: block;
 	min-height: 100vh;
 	width: 100%;
-	margin: 0;
+	margin: 55px 0 0 0;
 	padding: 0;
 	background-color: rgba(30,130,30,1);
 }
 
 .card {
 	border-color: rgba(20,100,20,1);
+}
+
+footer {
+	padding: 1.25rem;
+}
+
+#copyleft {
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+
+
+
+/* Bootstrap 4 Media Responsive Breakpoints */
+
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+
+	.viewport-container {
+		margin: 66px 0 0 0;
+	}
+
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
 }
