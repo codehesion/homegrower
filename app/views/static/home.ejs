@@ -2,13 +2,14 @@
 
 <div class="viewport-container pb-5">
     <div class="container-fluid">
+        
         <div class="row">
             <div class="col-12 col-md-6 ml-md-auto mr-md-auto text-center">
                 <div class="card mt-3">
                     <div class="card-header text-light bg-success">
                         <h1 class="mb-0">HomeGrower</h1>
                     </div>                    
-                    <div class="card-body">
+                        <div class="card-body">
                         <h5 class="card-subtitle mb-2 text-muted">A Home Growing Cannabis Management Solution</h5>
                         <% if(isLoggedIn){ %>
                             <p class="card-text text-success">Welcome <%= user.local.username %>, you are logged in.</p>
@@ -18,7 +19,28 @@
                     </div><!-- .card-body -->
                 </div><!-- .card -->
             </div><!-- .col -->
-        </div><!-- .row -->    
+        </div><!-- .row -->
+
+        <div class="row">
+            <div class="col-12 col-md-6 ml-md-auto mr-md-auto text-center">
+                <div class="card mt-3">
+                    <div class="card-header text-light bg-dark">
+                        <h3 class="mb-0">
+                            <i class="fa fa-leaf text-success"></i>&nbsp;
+                            Manage Your Grow
+                        </h3>
+                    </div>                    
+                    <div class="card-body">
+                        <p class="card-text">
+                            Setup your Grow, whether it be 2 Plants or 2 thousand.<br>
+                            Name your Plants, set their Strain.
+                        </p>
+                    </div><!-- .card-body -->
+                </div><!-- .card -->
+            </div><!-- .col -->
+        </div><!-- .row -->
+        
+
     </div><!-- .container-fluid -->            
 </div><!-- .viewport-container -->
 
