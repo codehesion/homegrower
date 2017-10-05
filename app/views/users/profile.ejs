@@ -18,7 +18,8 @@
                     </div><!-- .card-body -->
                     <ul class="list-group list-group-flush">
                         <% grows.forEach((grow) => { %>
-                            <a href="/grows/<%= grow._id %>" class="list-group-item list-group-item-action">
+                            <a href="/grows/<%= grow._id %>" class="list-group-item list-group-item-action bg-light">
+                                <i class="fa fa-lg fa-leaf text-success"></i>&nbsp;&nbsp;
                                 <%= grow.name %> - <%= grow.plants.length %> Plants
                             </a>
                         <% }); %>
