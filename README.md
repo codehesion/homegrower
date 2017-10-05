@@ -1,4 +1,7 @@
-# Node Website Template
+# HomeGrower
+A Cannabis Web Application for the Home Grower.  
+Demo can be viewed at [https://homegrower.codehesion.tech](https://homegrower.codehesion.tech)
+
 ## Installation
 
 ### Requirements
@@ -8,7 +11,7 @@ You should have [node.js](https://nodejs.org) and [git](https://git-scm.com/) in
 ### Clone Project
 In your terminal/console clone the project by entering the following command:
 ```
-git clone https://github.com/codehesion/template-auth.git
+git clone https://github.com/codehesion/homegrower.git
 ```
 
 ## Create Config File
@@ -24,7 +27,7 @@ process.env['DB_URI'] = "<your db URI>";
 ### Run From Terminal/Console
 Change directory to the project, install and launch:
 ```
-cd template-auth
+cd homegrower
 npm install
 clear && node server
 ```
