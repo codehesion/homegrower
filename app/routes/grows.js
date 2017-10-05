@@ -1,7 +1,8 @@
 /* Load Models */
-const User  = require('../models/user');
-const Grow  = require('../models/grow');
-const Plant = require('../models/plant');
+const User   = require('../models/user');
+const Grow   = require('../models/grow');
+const Strain = require('../models/strain');
+const Plant  = require('../models/plant');
 
 /* Middleware */
 const loginRequired = require('../middleware/loginRequired');
