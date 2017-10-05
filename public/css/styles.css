@@ -1,3 +1,7 @@
+body {
+
+}
+
 .viewport-container {
 	position: relative;
 	display: block;
@@ -5,4 +9,9 @@
 	width: 100%;
 	margin: 0;
 	padding: 0;
+	background-color: rgba(30,130,30,1);
+}
+
+.card {
+	border-color: rgba(20,100,20,1);
 }
