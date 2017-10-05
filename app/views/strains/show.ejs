@@ -1,25 +1,41 @@
 <% include ../partials/header.ejs %>
 
+<div class="viewport-container pb-5">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-md-6 ml-md-auto mr-md-auto text-center">
-                <div class="card mt-3">
+                <div class="card text-light bg-success mt-3">
                     <div class="card-body">
                         <h3 class="card-title"><%= strain.name %></h3>
-                        <h6 class="card-subtitle mb-2 text-muted">created <%= strain.createdFromNow() %></h6>
+                        <h6 class="card-subtitle mb-2">created <%= strain.createdFromNow() %></h6>
                         
                         <p class="card-text">
                             <%= strain.description %>
                         </p>
 
-                        <a href="/strains/<%= strain._id %>/edit" class="btn btn-primary">
-                            Edit Strain
-                        </a>
+                        <div class="row">
+                            <div class="col text-right">
+                                Grow Difficulty:
+                            </div><!--.col -->
+                            <div class="col text-left text-capitalize">
+                                <%= strain.growDifficulty %>
+                            </div><!--.col -->
+                        </div><!-- .row -->
 
-                    </div><!-- .card-body -->                   
+                    </div><!-- .card-body -->
+                    <% if(user.isAdmin){ %>
+                        <ul class="list-group list-group-flush">
+                            <a href="/strains/<%= strain._id %>/edit" class="list-group-item list-group-item-action text-light bg-primary">
+                                <i class="fa fa-lg fa-edit"></i>&nbsp;&nbsp;
+                                Edit Strain
+                            </a>                        
+                        </ul>
+                    <% } %>           
                 </div><!-- .card -->
             </div><!-- .col -->
         </div><!-- .row -->    
     </div><!-- .container-fluid -->            
+</div><!-- .viewport-container -->
+
 
 <% include ../partials/footer.ejs %>
