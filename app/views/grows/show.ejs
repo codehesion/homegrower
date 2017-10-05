@@ -5,24 +5,26 @@
             <div class="col-12 col-md-6 ml-md-auto mr-md-auto text-center">
                 <div class="card mt-3">
                     <div class="card-body">
-                        <h1 class="card-title"><%= profileUser.local.username %></h1>
-                        <h4 class="card-subtitle mb-2 text-muted">joined <%= profileUser.createdFromNow() %></h4>
+                        <h1 class="card-title"><%= grow.name %></h1>
+                        <h4 class="card-subtitle mb-2 text-muted">created <%= grow.createdFromNow() %></h4>
                         
                         <p class="card-text">
-                            You currently have <%= grows.length %> Grows.
+                            <%= grow.description %>
                         </p>
-                        
-                        <a href="/grows/new" class="card-link">Start A Grow</a>
+
+                        <p class="card-text">
+                            This Grow currently has <%= grow.plants.length %> Plants.
+                        </p>
 
                     </div><!-- .card-body -->
                     <ul class="list-group list-group-flush">
-                        <% grows.forEach((grow) => { %>
-                            <a href="/grows/<%= grow._id %>" class="list-group-item list-group-item-action">
-                                <%= grow.name %>
+                        <% grow.plants.forEach((plant) => { %>
+                            <a href="/plants/<%= plant._id %>" class="list-group-item list-group-item-action">
+                                <%= plant.name %>
                             </a>
                         <% }); %>
-                        <a href="/grows/new" class="list-group-item list-group-item-action">
-                            New Grow
+                        <a href="/grows/<%= grow._id %>/new-plant" class="list-group-item list-group-item-action">
+                            New Plant
                         </a>
                     </ul>                    
                 </div><!-- .card -->

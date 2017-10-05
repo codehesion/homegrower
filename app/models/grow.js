@@ -11,7 +11,7 @@ const growSchema = mongoose.Schema({
 });
 
 growSchema.methods.createdFromNow = function() {
-    return moment(this.local.createdAt).fromNow();
+    return moment(this.createdAt).fromNow();
 };
 
 module.exports = mongoose.model('Grow', growSchema);

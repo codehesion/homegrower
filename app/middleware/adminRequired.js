@@ -5,7 +5,8 @@ module.exports = function(req, res, next) {
         /* Continue */
         return next();
     } else {
+    	req.flash('loginMessage', 'You must be an admin to access this content!');
         /* If Not Authenticated & Admin, Redirect To Login Page */
-        res.redirect('/login'); 
+        res.redirect('/sign-in'); 
     } 	
 };
