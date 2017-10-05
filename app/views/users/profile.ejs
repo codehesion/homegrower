@@ -7,6 +7,16 @@
                     <div class="card-body">
                         <h1 class="card-title"><%= profileUser.local.username %></h1>
                         <h4 class="card-subtitle mb-2 text-muted">joined <%= profileUser.createdFromNow() %></h4>
+                        <% if(grows.length > 0){ %>
+                            <p class="card-text">
+                                You currently have <%= grows.length %> Grows.
+                            </p>
+                        <% } else { %>
+                            <p class="card-text">
+                                You currently have no Grows. 
+                            </p>
+                            <a href="#" class="card-link">Start A Grow</a>
+                        <% } %>
                     </div><!-- .card-body -->
                 </div><!-- .card -->
             </div><!-- .col -->

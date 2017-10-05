@@ -3,8 +3,10 @@ const moment   = require('moment');
 
 const growSchema = mongoose.Schema({
     user: { type: String, ref: "User" },
+    name: String,
+    description: String,
     plants: [{ type: String, ref: "Plant" }],
-    stage: { type: String, default: "seeding" },
+    yield: { type: Number, default: 0 },
     isComplete: { type: Boolean, default: false }
 });
 
