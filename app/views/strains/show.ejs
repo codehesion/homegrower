@@ -62,7 +62,61 @@
                     <% } %>           
                 </div><!-- .card -->
             </div><!-- .col -->
-        </div><!-- .row -->    
+        </div><!-- .row -->
+
+        <div class="row">
+            <div class="col-12 col-md-6 ml-md-auto mr-md-auto text-center">
+                <div class="card mt-5">
+                    <div class="card-header text-light bg-primary">
+                        <h3 class="mb-0">Comments</h3>
+                    </div>
+                    <% if(comments.length > 0){ %>
+                        <% comments.forEach((comment) => { %>
+                            <div class="card-body">
+                                <h4 class="card-title"><%= comment.user.local.username %></h4>
+                                <h6 class="card-subtitle text-muted mb-2"><%= comment.createdFromNow() %></h6>
+                                <p class="card-text"><%= comment.content %></p>
+                            </div><!-- .card-body -->
+                        <% }); %>
+                    <% } else { %>
+                        <div class="card-body">
+                            <p class="card-text">
+                                There are no comments for this Strain.
+                            </p>
+                        </div><!-- .card-body -->
+                    <% } %>
+                </div><!-- .card -->    
+            </div><!-- .col -->
+        </div><!-- .row --> 
+
+
+        <div class="row">
+            <div class="col-12 col-md-6 ml-md-auto mr-md-auto text-center">
+                <div class="card mt-5">
+                    <div class="card-header text-light bg-primary">
+                        <h3 class="mb-0">Leave A Comment</h3>
+                    </div>
+
+                    <% if(isLoggedIn){ %>
+                        <div class="card-body">
+                            <form action="/strains/<%= strain._id %>/leave-comment" method="post">
+                                <div class="form-group">
+                                    <textarea name="content" class="form-control" rows="5"></textarea>
+                                </div>
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn btn-primary">Submit Comment</button>
+                                </div>
+                            </form>
+                        </div><!-- .card-body -->
+                    <% } else { %>
+                        <div class="card-body">
+                            <p class="card-text">You must be signed in to leave a Comment.</p>
+                        </div><!-- .card-body -->
+                    <% } %>
+                </div><!-- .card -->    
+            </div><!-- .col -->
+        </div><!-- .row --> 
+
     </div><!-- .container-fluid -->            
 </div><!-- .viewport-container -->
 

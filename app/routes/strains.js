@@ -1,8 +1,9 @@
 /* Load Models */
-const User   = require('../models/user');
-const Grow   = require('../models/grow');
-const Strain = require('../models/strain');
-const Plant  = require('../models/plant');
+const User    = require('../models/user');
+const Grow    = require('../models/grow');
+const Strain  = require('../models/strain');
+const Plant   = require('../models/plant');
+const Comment = require('../models/comment');
 
 /* Middleware */
 const loginRequired = require('../middleware/loginRequired');
@@ -33,6 +34,22 @@ module.exports = function(app) {
             res.redirect('/strains');
         });
     });
+
+
+    // Leave Strain Comment
+    app.post('/strains/:strainId/leave-comment', loginRequired, function(req, res) {
+        let newComment = new Comment({
+            user: req.user._id,
+            category: "strain",
+            strain: req.params.strainId,
+            content: req.body.content
+        });
+        newComment.save((error) => {
+            if(error){ console.log(error); }
+            res.redirect(`/strains/${req.params.strainId}`);
+        });
+    });
+
 
     // Edit Strain Page
     app.get('/strains/:strainId/edit', loginRequired, getStrainById, function(req, res) {
@@ -69,7 +86,7 @@ module.exports = function(app) {
     });
 
     // Strain Profile Page
-    app.get('/strains/:strainId', loginRequired, getStrainById, function(req, res) {
+    app.get('/strains/:strainId', loginRequired, getStrainById, getStrainComments, function(req, res) {
         res.render('strains/show.ejs', {
             title : "Strain Profile"
         });
@@ -100,6 +117,21 @@ function getStrainById(req,res,next){
     .exec((error, strain) => {
         if(error){ console.log(error); }
         res.locals.strain = strain;
+        next();
+    });
+};
+
+function getStrainComments(req,res,next){
+    Comment
+    .find({strain: req.params.strainId},{},{sort: {createdAt: -1}})
+    .populate('user')
+    .populate('profileUser')
+    .populate('strain')
+    .populate('grow')
+    .populate('plant')
+    .exec((error, comments) => {
+        if(error){ console.log(error); }
+        res.locals.comments = comments;
         next();
     });
 };
