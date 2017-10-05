@@ -11,6 +11,13 @@ const adminRequired = require('../middleware/adminRequired');
 
 module.exports = function(app) {
 
+   // List Indica Strains Page
+    app.get('/strains/indica', loginRequired, adminRequired, getAllIndicaStrains, function(req, res) {
+        res.render('strains/list.ejs', {
+            title : "List Indica Strains"
+        });
+    });
+
     // New Strain Page
     app.get('/strains/new', loginRequired, adminRequired, function(req, res) {
         res.render('strains/new.ejs', {
@@ -109,6 +116,56 @@ function getAllStrains(req,res,next){
         res.locals.strains = strains;
         next();
     });
+};
+
+function getAllIndicaStrains(req,res,next){
+    Strain
+    .find({category: "indica"},{},{sort: {name: 1}})
+    .exec((error, strains) => {
+        if(error){ console.log(error); }
+        res.locals.strains = strains;
+        next();
+    });   
+};
+
+function getAllIndicaHybridStrains(req,res,next){
+    Strain
+    .find({category: "indica leaning hybrid"},{},{sort: {name: 1}})
+    .exec((error, strains) => {
+        if(error){ console.log(error); }
+        res.locals.strains = strains;
+        next();
+    });   
+};
+
+function getAllHybridStrains(req,res,next){
+    Strain
+    .find({category: "hybrid"},{},{sort: {name: 1}})
+    .exec((error, strains) => {
+        if(error){ console.log(error); }
+        res.locals.strains = strains;
+        next();
+    });   
+};
+
+function getAllSativaHybridStrains(req,res,next){
+    Strain
+    .find({category: "sativa leaning hybrid"},{},{sort: {name: 1}})
+    .exec((error, strains) => {
+        if(error){ console.log(error); }
+        res.locals.strains = strains;
+        next();
+    });   
+};
+
+function getAllSativaStrains(req,res,next){
+    Strain
+    .find({category: "sativa"},{},{sort: {name: 1}})
+    .exec((error, strains) => {
+        if(error){ console.log(error); }
+        res.locals.strains = strains;
+        next();
+    });   
 };
 
 function getStrainById(req,res,next){
