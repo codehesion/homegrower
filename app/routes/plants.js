@@ -12,7 +12,7 @@ module.exports = function(app) {
 
 
     // Edit Plant Page
-    app.get('/plants/:plantId/edit', loginRequired, getPlantById, function(req, res) {
+    app.get('/plants/:plantId/edit', loginRequired, getPlantById, getAllStrains, function(req, res) {
         res.render('plants/edit.ejs', {
             title : "Edit Plant"
         });
@@ -22,8 +22,7 @@ module.exports = function(app) {
         Plant
         .findOne({_id: req.params.plantId})   
         .exec((error, plant) => {
-            if(error){ console.log(error); }
-            
+            if(error){ console.log(error); }            
             plant.name = req.body.name;
             plant.description = req.body.description;
             plant.save((err) => {
@@ -96,6 +95,16 @@ function getCurrentUserPlants(req,res,next){
     .exec((error, plants) => {
         if(error){ console.log(error); }
         res.locals.plants = plants;
+        next();
+    });
+};
+
+function getAllStrains(req,res,next){
+    Strain
+    .find({},{},{sort: {name: 1}})
+    .exec((error, strains) => {
+        if(error){ console.log(error); }
+        res.locals.strains = strains;
         next();
     });
 };

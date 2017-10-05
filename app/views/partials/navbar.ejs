@@ -24,13 +24,21 @@
                     <a class="nav-link" href="/sign-in"><i class="fa fa-2x fa-sign-in"></i></a>
                 </li>                
             <% } else { %>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="infoDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-2x fa-info-circle"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="infoDropdownMenuLink">
+                        <a class="dropdown-item" href="/strains">Strains</a>
+                    </div>
+                </li>                
                 <% if(user.isAdmin){ %>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="adminDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-2x fa-key"></i>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="adminDropdownMenuLink">
-                            <a class="dropdown-item" href="/strains">Strains</a>
+                            <a class="dropdown-item" href="/strains/new">New Strain</a>
                         </div>
                     </li>
                 <% } %>

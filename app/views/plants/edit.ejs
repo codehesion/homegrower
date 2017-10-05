@@ -1,0 +1,71 @@
+<% include ../partials/header.ejs %>
+
+<div class="viewport-container pb-5">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-6 ml-md-auto mr-md-auto text-center">
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h1 class="card-title">Edit Plant</h1>
+                        <form method="post">
+                            <div class="form-group">
+                                <label for="strain">Strain</label>
+                                <select name="strain" class="form-control">
+                                    <% strains.forEach((strain) => { %>
+                                        <option 
+                                            value="<%= strain._id %>" 
+                                            <% if(plant.strain._id === strain._id){ %>selected<% } %>
+                                        ><%= strain.name %></option>
+                                    <% }); %>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" name="name" class="form-control" value="<%= plant.name %>">
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea name="description" class="form-control"><%= plant.description %></textarea>
+                            </div>
+                            <div class="form-group btn-group">
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fa fa-lg fa-save"></i>&nbsp;&nbsp;Update
+                                </button>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete-modal">
+                                    Delete
+                                </button>
+                            </div>
+                        </form>
+                    </div><!-- .card-body -->                    
+                </div><!-- .card -->
+
+                <!-- Modal -->
+                <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="delete-modal-label" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="delete-modal-label">Delete Plant ?</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>
+                                    Warning! This action cannot be reversed!<br>
+                                    Do you wish to continue?
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <a type="button" href="/plants/<%= plant._id %>/delete" class="btn btn-danger">Continue &amp; Delete </a>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- .modal --> 
+
+            </div><!-- .col -->
+        </div><!-- .row -->    
+    </div><!-- .container-fluid -->            
+</div><!-- .viewport-container -->
+
+<% include ../partials/footer.ejs %>

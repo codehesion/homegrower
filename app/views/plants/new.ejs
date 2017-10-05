@@ -1,5 +1,6 @@
 <% include ../partials/header.ejs %>
 
+<div class="viewport-container pb-5">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-md-6 ml-md-auto mr-md-auto text-center">
@@ -7,6 +8,14 @@
                     <div class="card-body">
                         <h1 class="card-title">New Plant</h1>
                         <form method="post">
+                            <div class="form-group">
+                                <label for="strain">Strain</label>
+                                <select name="strain" class="form-control">
+                                    <% strains.forEach((strain) => { %>
+                                        <option value="<%= strain._id %>"><%= strain.name %></option>
+                                    <% }); %>
+                                </select>
+                            </div>
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" name="name" class="form-control">
@@ -26,5 +35,6 @@
             </div><!-- .col -->
         </div><!-- .row -->    
     </div><!-- .container-fluid -->            
+</div><!-- .viewport-container -->
 
 <% include ../partials/footer.ejs %>

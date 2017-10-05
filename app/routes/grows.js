@@ -30,7 +30,7 @@ module.exports = function(app) {
     });
 
     // New Plant Page
-    app.get('/grows/:growId/new-plant', loginRequired, function(req, res) {
+    app.get('/grows/:growId/new-plant', loginRequired, getAllStrains, function(req, res) {
         res.render('plants/new.ejs', {
             title : "New Plant"
         });
@@ -40,12 +40,21 @@ module.exports = function(app) {
         let newPlant = new Plant({
             user: req.user._id,
             grow: req.params.growId,
+            strain: req.body.strain,
             name: req.body.name,
             description: req.body.description
         });
-        newPlant.save((error) => {
+        newPlant.save((error, plant) => {
             if(error){ console.log(error); }
-            res.redirect(`/grows/${req.params.growId}`);
+            Grow
+            .findOne({_id: req.params.growId })
+            .exec((err, grow) => {
+                grow.plants.push(plant._id);
+                grow.save((error) => {
+                    if(error){ console.log(error); }
+                    res.redirect(`/grows/${req.params.growId}`);
+                });
+            });
         });
     });
 
@@ -134,6 +143,16 @@ function getCurrentUserGrows(req,res,next){
     .exec((error, grows) => {
         if(error){ console.log(error); }
         res.locals.grows = grows;
+        next();
+    });
+};
+
+function getAllStrains(req,res,next){
+    Strain
+    .find({},{},{sort: {name: 1}})
+    .exec((error, strains) => {
+        if(error){ console.log(error); }
+        res.locals.strains = strains;
         next();
     });
 };
