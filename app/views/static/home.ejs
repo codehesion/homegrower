@@ -8,7 +8,7 @@
                         <h1 class="card-title">HomeGrower</h1>
                         <h4 class="card-subtitle mb-2 text-muted">A Home Growing Cannabis Management Solution</h4>
                         <% if(isLoggedIn){ %>
-                            <p class="card-text text-success">You are logged in.</p>
+                            <p class="card-text text-success">Welcome <%= user.local.username %>, you are logged in.</p>
                         <% } else { %>
                             <p class="card-text text-danger">You are not logged in.</p>
                         <% } %>

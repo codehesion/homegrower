@@ -109,6 +109,8 @@ require('./app/routes/catchAll.js')(app);
 // Require Routes
 require('./app/routes/static.js')(app);
 require('./app/routes/passport.js')(app, passport);
+require('./app/routes/users.js')(app);
+
 
 /*****************/
 /* Launch Server */

@@ -9,7 +9,7 @@ module.exports = function(app, passport) {
     });
 
     app.post('/sign-in', passport.authenticate('local-login', {
-        successRedirect : '/',
+        successRedirect : '/profile',
         failureRedirect : '/sign-in',
         failureFlash : true
     }));
@@ -23,7 +23,7 @@ module.exports = function(app, passport) {
     });
 
     app.post('/sign-up', passport.authenticate('local-signup', {
-        successRedirect : '/',
+        successRedirect : '/profile',
         failureRedirect : '/sign-up',
         failureFlash : true,
     }));
